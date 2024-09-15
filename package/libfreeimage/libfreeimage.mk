@@ -32,10 +32,11 @@ endif
 
 # batocera - add -fPIC during cross-compile
 ifeq ($(HOSTARCH),aarch64)
-ifeq ($(BR2_x86_64),y)
+# $$$ not just BR_x86_64
+#ifeq ($(BR2_x86_64),y)
 	LIBFREEIMAGE_CFLAGS += -fPIC
 	LIBFREEIMAGE_CXXFLAGS=$(TARGET_CXXFLAGS) -fPIC
-endif
+#endif
 endif
 
 # batocera - add -fPIC during cross-compile

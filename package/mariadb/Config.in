@@ -8,11 +8,13 @@ config BR2_PACKAGE_MARIADB
 	depends on BR2_USE_WCHAR # fmt
 	select BR2_PACKAGE_LIBAIO
 	select BR2_PACKAGE_LIBXML2
+	select BR2_PACAKGE_LZO
 	select BR2_PACKAGE_FMT
 	select BR2_PACKAGE_NCURSES
 	select BR2_PACKAGE_OPENSSL
 	select BR2_PACKAGE_LIBOPENSSL_ENABLE_DES if BR2_PACKAGE_LIBOPENSSL
 	select BR2_PACKAGE_PCRE2
+	select BR2_PACKAGE_SNAPPY
 	help
 	  MariaDB is one of the most popular database servers in the
 	  world.  It's made by the original developers of MySQL and

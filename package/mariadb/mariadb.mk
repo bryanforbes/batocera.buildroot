@@ -23,7 +23,9 @@ MARIADB_DEPENDENCIES = \
 	pcre2 \
 	zlib \
 	libaio \
-	libxml2
+	libxml2 \
+	lzo \
+	snappy
 
 MARIADB_CONF_OPTS += \
 	-DWITH_LIBFMT=system \

@@ -13,7 +13,7 @@ ifneq ($(BR2_PACKAGE_BATOCERA_TARGET_X86_ANY)$(BR2_PACKAGE_BATOCERA_TARGET_RK358
     GLVND_TRUE = true
     GLVND_FALSE = false
 else
-    MESA3D_VERSION = 24.2.8
+    MESA3D_VERSION = 24.3.2
     GLVND_TRUE = enabled
     GLVND_FALSE = disabled
 endif
@@ -44,18 +44,32 @@ ifeq ($(BR2_PACKAGE_DIRECTX_HEADERS),y)
 MESA3D_DEPENDENCIES += directx-headers
 endif
 
-MESA3D_CONF_OPTS = \
-	-Dgallium-omx=disabled \
-	-Dgallium-rusticl=false \
-	-Dmicrosoft-clc=disabled \
-	-Dopencl-spirv=false \
-	-Dpower8=disabled
+# batocera - remove redundant -Dgallium-omx option for newer mesa
+ifeq ($(MESA3D_VERSION),23.2.1)
+    MESA3D_CONF_OPTS = \
+	    -Dgallium-omx=disabled \
+	    -Dgallium-rusticl=false \
+		-Dmicrosoft-clc=disabled \
+		-Dopencl-spirv=false \
+		-Dpower8=disabled
+else
+    MESA3D_CONF_OPTS = \
+	    -Dgallium-rusticl=false \
+		-Dmicrosoft-clc=disabled \
+		-Dopencl-spirv=false \
+		-Dpower8=disabled
+endif
 
+# batocera - remove redundant dri3 option for newer mesa
 ifeq ($(BR2_PACKAGE_MESA3D_DRIVER)$(BR2_PACKAGE_XORG7),yy)
-MESA3D_CONF_OPTS += -Ddri3=enabled
+    ifeq ($(MESA3D_VERSION),23.2.1)
+    MESA3D_CONF_OPTS += -Ddri3=enabled
+	endif
 MESA3D_DEPENDENCIES += xlib_libxshmfence
 else
-MESA3D_CONF_OPTS += -Ddri3=disabled
+    ifeq ($(MESA3D_VERSION),23.2.1)
+    MESA3D_CONF_OPTS += -Ddri3=disabled
+	endif
 endif
 
 ifeq ($(BR2_PACKAGE_MESA3D_LLVM),y)

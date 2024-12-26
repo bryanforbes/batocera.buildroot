@@ -394,16 +394,28 @@ HOST_MESA3D_DEPENDENCIES = \
 	host-spirv-llvm-translator \
 	host-zlib
 
-HOST_MESA3D_CONF_OPTS = \
-	-Dgallium-omx=disabled \
-	-Dpower8=disabled \
-	-Dgallium-drivers="" \
-	-Dvulkan-drivers="" \
-	-Dglx=disabled \
-	-Dplatforms="" \
-	-Dintel-clc=enabled \
-	-Dllvm=enabled \
-	-Dinstall-intel-clc=true
+ifeq ($(MESA3D_VERSION),23.2.1)
+    HOST_MESA3D_CONF_OPTS = \
+		-Dgallium-omx=disabled \
+		-Dpower8=disabled \
+		-Dgallium-drivers="" \
+		-Dvulkan-drivers="" \
+		-Dglx=disabled \
+		-Dplatforms="" \
+		-Dintel-clc=enabled \
+		-Dllvm=enabled \
+		-Dinstall-intel-clc=true
+else
+    HOST_MESA3D_CONF_OPTS = \
+		-Dpower8=disabled \
+		-Dgallium-drivers="" \
+		-Dvulkan-drivers="" \
+		-Dglx=disabled \
+		-Dplatforms="" \
+		-Dintel-clc=enabled \
+		-Dllvm=enabled \
+		-Dinstall-intel-clc=true
+endif
 
 $(eval $(meson-package))
 # batocera - add host package

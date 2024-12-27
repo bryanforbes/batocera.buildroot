@@ -4,7 +4,6 @@
 #
 ################################################################################
 
-# batocera - bump
 # Keep the version and patches in sync with bluez5_utils
 BLUEZ5_UTILS_HEADERS_VERSION = 5.78
 BLUEZ5_UTILS_HEADERS_SOURCE = bluez-$(BLUEZ5_UTILS_VERSION).tar.xz

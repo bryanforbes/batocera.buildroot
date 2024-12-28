@@ -68,7 +68,6 @@ config BR2_PACKAGE_QT6BASE_XCB
 	select BR2_PACKAGE_XCB_UTIL_RENDERUTIL
 	select BR2_PACKAGE_XCB_UTIL_WM
 	select BR2_PACKAGE_LIBXKBCOMMON
-	select BR2_PACKAGE_XCB_UTIL_CURSOR
 
 comment "X.org XCB backend available if X.org is enabled"
 	depends on !BR2_PACKAGE_XORG7

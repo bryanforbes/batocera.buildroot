@@ -3,7 +3,7 @@
 # libdrm
 #
 ################################################################################
-# batocera - bump
+
 LIBDRM_VERSION = 2.4.123
 LIBDRM_SOURCE = libdrm-$(LIBDRM_VERSION).tar.xz
 LIBDRM_SITE = https://dri.freedesktop.org/libdrm

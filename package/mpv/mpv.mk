@@ -3,7 +3,7 @@
 # mpv
 #
 ################################################################################
-# batcoera - bump for ffmpeg update
+# batcoera - bump for ffmpeg update. remove 0001 patch
 # move from waf to meson package
 MPV_VERSION = 0.38.0
 MPV_SITE = $(call github,mpv-player,mpv,v$(MPV_VERSION))

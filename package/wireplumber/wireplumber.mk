@@ -13,6 +13,8 @@ WIREPLUMBER_DEPENDENCIES = host-pkgconf pipewire libglib2 lua
 
 WIREPLUMBER_CONF_OPTS = \
 	-Ddoc=disabled \
+	-Dtests=false \
+	-Delogind=disabled \
 	-Dsystem-lua=true \
 	-Dsystem-lua-version=
 

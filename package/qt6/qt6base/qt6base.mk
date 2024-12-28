@@ -197,7 +197,8 @@ QT6BASE_CONF_OPTS += \
 	-DFEATURE_xcb=ON \
 	-DFEATURE_xcb_xlib=ON \
 	-DFEATURE_xkbcommon=ON \
-	-DFEATURE_xkbcommon_x11=ON
+	-DFEATURE_xkbcommon_x11=ON \
+	-DFEATURE_system_xcb_xinput=ON # batocera
 QT6BASE_DEPENDENCIES += \
 	libxcb \
 	libxkbcommon \
@@ -205,7 +206,8 @@ QT6BASE_DEPENDENCIES += \
 	xcb-util-image \
 	xcb-util-keysyms \
 	xcb-util-renderutil \
-	xlib_libX11
+	xlib_libX11 \
+	xcb-util-cursor # batocera
 else
 QT6BASE_CONF_OPTS += -DFEATURE_xcb=OFF
 endif

@@ -764,14 +764,18 @@ endif
 	#	{ echo "ERROR: we shouldn't have a /etc/ld.so.conf file"; exit 1; } || true
 	test -d $(TARGET_DIR)/etc/ld.so.conf.d && \
 		{ echo "ERROR: we shouldn't have a /etc/ld.so.conf.d directory"; exit 1; } || true
+	# batocera - change distro details
 	mkdir -p $(TARGET_DIR)/etc
 	( \
-		echo "NAME=Buildroot"; \
-		echo "VERSION=$(BR2_VERSION_FULL)"; \
+		echo "NAME=Batocera.linux"; \
+		echo 'PRETTY_NAME=\"Batocera.linux $(BATOCERA_SYSTEM_VERSION)\"'; \
+		echo "VERSION=$(BATOCERA_SYSTEM_VERSION)"; \
 		echo "ID=buildroot"; \
 		echo "VERSION_ID=$(BR2_VERSION)"; \
-		echo "PRETTY_NAME=\"Buildroot $(BR2_VERSION)\"" \
-	) >  $(TARGET_DIR)/usr/lib/os-release
+		echo 'HOME_URL="https://batocera.org/"'; \
+		echo 'DOCUMENTATION_URL="https://wiki.batocera.org/"'; \
+		echo 'BUG_REPORT_URL="https://github.com/batocera-linux/batocera.linux/issues"'; \
+	) > $(TARGET_DIR)/usr/lib/os-release
 	ln -sf ../usr/lib/os-release $(TARGET_DIR)/etc
 
 	@$(call MESSAGE,"Sanitizing RPATH in target tree")

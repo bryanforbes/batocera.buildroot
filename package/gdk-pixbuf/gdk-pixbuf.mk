@@ -31,6 +31,10 @@ HOST_GDK_PIXBUF_CONF_OPTS = \
 	-Drelocatable=true \
 	-Dman=false
 
+# batocera - enable xpm and other file types
+GDK_PIXBUF_CONF_OPTS += -Dothers=enabled
+HOST_GDK_PIXBUF_CONF_OPTS += -Dothers=enabled
+
 ifeq ($(BR2_STATIC_LIBS),y)
 GDK_PIXBUF_CONF_OPTS += -Dbuiltin_loaders=all
 endif

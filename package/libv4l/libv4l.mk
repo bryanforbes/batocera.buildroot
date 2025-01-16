@@ -71,4 +71,9 @@ ifeq ($(BR2_PACKAGE_SDL2_IMAGE),y)
 LIBV4L_DEPENDENCIES += sdl2_image
 endif
 
+# batocera - disable gconv as it overwrites glibc configuration
+ifeq ($(BR2_ENABLE_LOCALE),y)
+LIBV4L_CONF_OPTS += -Dgconv=disabled
+endif
+
 $(eval $(meson-package))
